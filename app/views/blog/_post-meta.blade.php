@@ -1,0 +1,1 @@
+<p class="post-meta">Posted by <a href="#">{{$post->user->login}}</a> on {{$post->created_at}}</p>
