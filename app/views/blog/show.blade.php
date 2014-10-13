@@ -9,5 +9,6 @@
             </p>
             @include('blog._post-meta')
         </div>
+        @include('blog.actions')
     </div>
 @stop

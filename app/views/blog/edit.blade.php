@@ -13,10 +13,23 @@
             <div class="form-group">
                 <textarea name="content" class="form-control"  placeholder="Content">{{$post->content}}</textarea>
             </div>
-
+            <div class="form-group">
+                <div class="editable" contenteditable="false"></div>
+            </div>
             <div class="form-group">
                 <input type="submit" class="btn btn-default" value="Save">
             </div>
+
+            <script>
+                var input = $('textarea')[1];
+                $('.editable').html(input.value);
+
+                input.oninput = function() {
+                    $('.editable').html(input.value);
+                }
+
+
+            </script>
 
         </form>
     </div>
