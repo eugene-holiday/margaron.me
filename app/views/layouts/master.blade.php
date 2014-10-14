@@ -92,7 +92,7 @@
                 <div class="site-heading">
                     <h1>Бложик</h1>
                     <hr class="small">
-                    <span class="subheading">Мои личные новости и достиженя</span>
+                    <span class="subheading">Мои личные новости и достижения</span>
                 </div>
             </div>
         </div>
