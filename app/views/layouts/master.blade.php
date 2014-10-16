@@ -56,7 +56,7 @@
 
                     <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{Auth::user()->login}} <span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
+                    <ul class="dropdown-menu not-last" role="menu">
                         <li><a href="{{URL::route('blog.create')}}">Add Post</a></li>
                         <li class="divider"></li>
                         <li><a href="{{URL::to('profile')}}">Profile</a></li>
@@ -74,7 +74,7 @@
                     <a href="{{URL::route('portfolio')}}">Наверно, портфолио</a>
                 </li>
                 <li>
-                    <a href="{{URL::route('contact')}}">Контакты</a>
+                    <a href="contact.html">Контакты</a>
                 </li>
             </ul>
         </div>

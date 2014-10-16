@@ -480,4 +480,6 @@ body {
     width: 600px;
 }
 
-
+.not-last{
+    right:auto !important;
+}
