@@ -9,6 +9,7 @@ class BaseController extends Controller {
     {
         // CSRF Protection
         $this->beforeFilter('csrf', array('on' => 'post'));
+        //View::share('user', Auth::user());
     }
 
 	/**
