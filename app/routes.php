@@ -70,3 +70,5 @@ App::missing(function($exception)
 {
     return View::make('dashboard');
 });
+
+Route::resource('pages', 'PagesController');
