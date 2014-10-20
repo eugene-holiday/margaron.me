@@ -22,7 +22,7 @@
             </div>
         </div>
         <div class="form-group">
-            <input type="submit" class="btn btn-default" value="Sign in">
+            <input name="sign in" type="submit" class="btn btn-default" value="Sign in">
         </div>
 
     </form>

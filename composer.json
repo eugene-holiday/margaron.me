@@ -5,10 +5,13 @@
 	"license": "MIT",
 	"require": {
 		"laravel/framework": "4.2.*",
-        "barryvdh/laravel-ide-helper": "1.11.*@dev",
-        "fzaninotto/faker": "1.*",
+        "fzaninotto/faker": "1.*"
+    },
+    "require-dev": {
         "way/generators": "~2.0",
-        "jrenton/laravel-scaffold": "dev-master"
+        "barryvdh/laravel-ide-helper": "1.11.*@dev",
+        "jrenton/laravel-scaffold": "dev-master",
+        "codeception/codeception": "~2.0"
     },
 	"autoload": {
 		"classmap": [
@@ -37,4 +40,5 @@
 		"preferred-install": "dist"
 	},
 	"minimum-stability": "stable"
+
 }
