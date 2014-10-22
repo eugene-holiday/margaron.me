@@ -14,11 +14,6 @@ class BlogController extends BaseController {
 	 */
 	public function index()
 	{
-
-        if (Request::ajax())
-        {
-            return Response::json(Blog::get());
-        }
         $posts = Blog::all();
         $posts = $posts->sortBy('created_at', 0, true);
         $this->layout->content =  View::make('blog.index', compact('posts'));
@@ -49,11 +44,6 @@ class BlogController extends BaseController {
         $post->content = Input::get('content');
         $post->user_id = Auth::user()->id;
         $post->save();
-
-        if (Request::ajax())
-        {
-            return Response::json(array('success' => true));
-        }
 
 		return Redirect::home();
 	}
@@ -112,12 +102,6 @@ class BlogController extends BaseController {
 	public function destroy($id)
 	{
         Blog::destroy($id);
-
-        if (Request::ajax())
-        {
-            return Response::json(array('success' => true));
-        }
-
         return Redirect::route('blog.index');
 	}
 
