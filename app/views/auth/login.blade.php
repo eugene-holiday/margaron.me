@@ -2,14 +2,17 @@
     @if(Session::has('error'))
         {{Session::get('error')}}
     @endif
-    <form method="post" class="form-signin" action="{{URL::route('doAuth')}}">
 
-        <input type="hidden" value="{{csrf_token()}}" name="_token"/>
+    {{Form::open(['route'=>'doAuth', 'class'=>'form-signin'])}}
+        <!--<form method="post" class="form-signin" action="{{URL::route('doAuth')}}">
+        <input type="hidden" value="{{csrf_token()}}" name="_token"/>-->
+
         <div class="form-group">
-            <input type="text" name="login" class="form-control"  placeholder="Login">
+            {{Form::input('text','login',null, ['placeholder'=>'Login', 'class'=>'form-control'])}}
         </div>
+
         <div class="form-group">
-            <input type="password" name="password" class="form-control"  placeholder="Password">
+            {{Form::input('password','password',null, ['placeholder'=>'Password', 'class'=>'form-control'])}}
         </div>
 
         <div class="form-group">
@@ -21,9 +24,10 @@
                 </div>
             </div>
         </div>
+
         <div class="form-group">
-            <input name="sign in" type="submit" class="btn btn-default" value="Sign in">
+            {{Form::submit('Sign in', ['class'=>'btn btn-default'])}}
         </div>
 
-    </form>
+    {{Form::close()}}
 @stop
