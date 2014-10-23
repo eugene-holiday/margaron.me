@@ -1,4 +1,36 @@
-/* line 1, F:/OpenServer/domains/margaron.dev/app/assets/sass/main.sass */
+/* line 1, D:/www/margaron.dev/app/assets/sass/main.sass */
 .post-title {
   -webkit-transition: all 500ms;
           transition: all 500ms; }
+
+/* line 4, D:/www/margaron.dev/app/assets/sass/main.sass */
+.dropzone-previews {
+  height: 200px;
+  background: #2c3e50; }
+  /* line 7, D:/www/margaron.dev/app/assets/sass/main.sass */
+  .dropzone-previews:hover {
+    background: #d35400; }
+
+/* line 10, D:/www/margaron.dev/app/assets/sass/main.sass */
+#preview {
+  display: none;
+  min-height: 110px;
+  overflow: hidden;
+  margin-top: 10px; }
+  /* line 16, D:/www/margaron.dev/app/assets/sass/main.sass */
+  #preview .box {
+    width: 100px;
+    height: 100px;
+    margin: 5px;
+    padding: 3px 0;
+    overflow: hidden;
+    float: left;
+    background: #bdc3c7;
+    box-shadow: 3px;
+    display: block;
+    box-shadow: 10px 10px 5px -7px rgba(0, 0, 0, 0.75); }
+    /* line 28, D:/www/margaron.dev/app/assets/sass/main.sass */
+    #preview .box img {
+      height: 100px;
+      display: block;
+      margin: 0 auto; }

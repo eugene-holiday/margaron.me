@@ -11,4 +11,3 @@ _ide_helper.php
 npm-debug.log
 tests/_output/*
 /public/uploads
-main.css
