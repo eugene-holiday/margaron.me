@@ -104,6 +104,7 @@
 <!-- Main Content -->
 <div class="container">
     <div class="row">
+        @include('layouts.notifications')
         @yield('content')
     </div>
 </div>
