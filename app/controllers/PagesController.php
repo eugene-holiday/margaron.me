@@ -1,6 +1,6 @@
 <?php
 
-class PagesController extends \BaseController {
+class PagesController extends BaseController {
 
 	/**
 	 * Display a listing of the resource.
@@ -21,7 +21,7 @@ class PagesController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+        $this->layout->content = View::make('pages.create');
 	}
 
 	/**
@@ -32,7 +32,26 @@ class PagesController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+        $files = Input::file('files');
+        foreach($files as $file) {
+            $rules = array(
+                'file' => 'required|mimes:png,gif,jpeg|max:20000'
+            );
+            $validator = \Validator::make(array('file' => $file), $rules);
+
+            if($validator->passes()) {
+                $ext = $file->guessClientExtension();
+                $filename = $file->getClientOriginalName();
+                $file->move('uploads/', $filename);
+            }
+            else{
+                return Redirect::back()
+                    //->with('error', '<i class="fa fa-exclamation-triangle fa-lg"></i> Something went wrong! ')
+                    ->withErrors($validator)
+                    ->withInput();
+            }
+        }
+        return Redirect::route('pages.index')->with('success','Page created');
 	}
 
 	/**
