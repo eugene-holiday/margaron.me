@@ -22,7 +22,10 @@
 			"app/database/migrations",
 			"app/database/seeds",
 			"app/tests/TestCase.php"
-		]
+		],
+        "psr-4": {
+            "Margaron\\": "app/Margaron"
+        }
 	},
 	"scripts": {
 		"post-install-cmd": [

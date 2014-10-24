@@ -1,5 +1,7 @@
 <?php
 
+use Margaron\Users\User;
+
 class ProfileController extends BaseController {
 
     private $id;

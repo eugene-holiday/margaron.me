@@ -1,5 +1,7 @@
 <?php
 
+use Margaron\Pages\Page;
+
 class PagesController extends BaseController {
 
 	/**
@@ -63,8 +65,19 @@ class PagesController extends BaseController {
 	 */
 	public function show($id)
 	{
-		//
-	}
+        $page = Page::findOrFail($id);
+        $this->layout->content = View::make('pages.show', array('page' => $page));
+    }
+
+    public function showBySlug($slug)
+    {
+        $page = Page::where('slug', '=', $slug)->first();
+
+        if(!$page){
+            return Redirect::home();
+        }
+        $this->layout->content = View::make('pages.show', array('page' => $page));
+    }
 
 	/**
 	 * Show the form for editing the specified resource.

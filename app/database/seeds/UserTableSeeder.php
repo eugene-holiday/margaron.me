@@ -1,5 +1,7 @@
 <?php
 
+use Margaron\Users\User;
+
 class UserTableSeeder extends Seeder {
 
     public function run()

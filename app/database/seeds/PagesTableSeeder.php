@@ -1,6 +1,6 @@
 <?php
 
-// Composer: "fzaninotto/faker": "v1.3.0"
+use Margaron\Pages\Page;
 use Faker\Factory as Faker;
 
 class PagesTableSeeder extends Seeder {

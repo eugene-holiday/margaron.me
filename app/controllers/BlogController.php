@@ -1,5 +1,7 @@
 <?php
 
+use Margaron\Blog\Blog;
+
 class BlogController extends BaseController {
 
     function __construct()

@@ -1,6 +1,7 @@
-<?php
+<?php namespace Margaron\Blog;
 
-class Blog extends Eloquent
+
+class Blog extends \Eloquent
 {
     protected $table = 'blogs';
 
@@ -8,7 +9,7 @@ class Blog extends Eloquent
 
     public function user()
     {
-        return $this->belongsTo('User');
+        return $this->belongsTo('Margaron\Users\User');
     }
 
 } 
