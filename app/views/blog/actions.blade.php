@@ -10,7 +10,7 @@
     <div class="pull-left">
         {{ Form::open(array('url' => 'blog/' . $post->id, 'class' => '')) }}
         {{ Form::hidden('_method', 'DELETE') }}
-        {{Form::button('<span class="glyphicon glyphicon-trash"></span>', array('type' => 'button submit', 'class' => 'btn btn-default'))}}
+        {{ Form::button('<span class="glyphicon glyphicon-trash"></span>', array('type' => 'button submit', 'class' => 'btn btn-default'))}}
         {{ Form::close() }}
     </div>
 
