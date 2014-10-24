@@ -6,6 +6,12 @@ Route::get('/', [
     'uses' => 'BlogController@index'
 ]);
 
+Route::get('{slug}', [
+    'as' => 'page',
+    'uses' => 'PagesController@showBySlug'
+]);
+
+
 Route::get('about', array('as' => 'about', function()
 {
     return View::make('static.about');
@@ -70,5 +76,6 @@ App::missing(function($exception)
 {
     return View::make('dashboard');
 });
+
 
 Route::resource('pages', 'PagesController');
