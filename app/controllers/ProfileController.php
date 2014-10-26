@@ -9,7 +9,8 @@ class ProfileController extends BaseController {
     function __construct()
     {
         $this->beforeFilter('auth');
-        $this->id = Auth::user()->id;
+        if(Auth::check())
+            $this->id = Auth::user()->id;
     }
 
     /**
