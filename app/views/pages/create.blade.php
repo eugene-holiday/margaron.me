@@ -11,7 +11,7 @@
                 <input type="text" name="title" class="form-control"  placeholder="Title">
             </div>
             <div class="form-group">
-                <textarea name="intro" class="form-control"  placeholder="Intro"></textarea>
+                <input type="text" name="slug" class="form-control"  placeholder="Slug">
             </div>
             <div class="form-group">
                 <textarea name="content" class="form-control"  placeholder="Content"></textarea>
@@ -34,7 +34,7 @@
 
 
         <script>
-            var input = $('textarea')[1];
+            var input = $('textarea')[0];
             $('.editable').html(input.value);
 
             input.oninput = function() {

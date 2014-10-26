@@ -59,6 +59,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{$user->login}} <span class="caret"></span></a>
                         <ul class="dropdown-menu not-last" role="menu">
                             <li><a href="{{URL::route('blog.create')}}">Add Post</a></li>
+                            <li><a href="{{URL::to('pages')}}">Pages</a></li>
                             <li class="divider"></li>
                             <li><a href="{{URL::to('profile')}}">Profile</a></li>
                             <li><a href="{{URL::route('logout')}}">Log out</a></li>
@@ -70,13 +71,13 @@
                     <a href="{{URL::route('home')}}">Главная</a>
                 </li>
                 <li>
-                    <a href="{{URL::route('about')}}">Обо мне</a>
+                    <a href="{{URL::to('about')}}">Обо мне</a>
                 </li>
                 <li>
                     <a href="{{URL::route('portfolio')}}">Наверно, портфолио</a>
                 </li>
                 <li>
-                    <a href="contact.html">Контакты</a>
+                    <a href="{{URL::to('contact')}}">Контакты</a>
                 </li>
             </ul>
         </div>
@@ -139,7 +140,7 @@
                             </a>
                         </li>
                     </ul>
-                    <p class="copyright text-muted">Copyright &copy; Your Website 2014</p>
+                    <p class="copyright text-muted">Copyright &copy; Margaron.me 2014</p>
                 </div>
             </div>
         </div>

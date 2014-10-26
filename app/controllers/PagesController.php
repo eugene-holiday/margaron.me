@@ -4,6 +4,12 @@ use Margaron\Pages\Page;
 
 class PagesController extends BaseController {
 
+
+    function __construct()
+    {
+        $this->beforeFilter('auth', array('except' => array('show')));
+    }
+
 	/**
 	 * Display a listing of the resource.
 	 * GET /pages
@@ -12,7 +18,9 @@ class PagesController extends BaseController {
 	 */
 	public function index()
 	{
-		//
+        $pages = Page::all();
+        $pages = $pages->sortBy('created_at', 0, true);
+        $this->layout->content =  View::make('pages.index', compact('pages'));
 	}
 
 	/**
@@ -35,46 +43,44 @@ class PagesController extends BaseController {
 	public function store()
 	{
         $files = Input::file('files');
-        foreach($files as $file) {
-            $rules = array(
-                'file' => 'required|mimes:png,gif,jpeg|max:20000'
-            );
-            $validator = \Validator::make(array('file' => $file), $rules);
-
-            if($validator->passes()) {
-                $ext = $file->guessClientExtension();
-                $filename = $file->getClientOriginalName();
-                $file->move('uploads/', $filename);
-            }
-            else{
-                return Redirect::back()
-                    //->with('error', '<i class="fa fa-exclamation-triangle fa-lg"></i> Something went wrong! ')
-                    ->withErrors($validator)
-                    ->withInput();
-            }
-        }
+//        foreach($files as $file) {
+//            $rules = array(
+//                'file' => 'required|mimes:png,gif,jpeg|max:20000'
+//            );
+//            $validator = \Validator::make(array('file' => $file), $rules);
+//
+//            if($validator->passes()) {
+//                $ext = $file->guessClientExtension();
+//                $filename = $file->getClientOriginalName();
+//                $file->move('uploads/', $filename);
+//            }
+//            else{
+//                return Redirect::back()
+//                    //->with('error', '<i class="fa fa-exclamation-triangle fa-lg"></i> Something went wrong! ')
+//                    ->withErrors($validator)
+//                    ->withInput();
+//            }
+//        }
+        $page = new Page();
+        $page->title = Input::get('title');
+        $page->slug = Input::get('slug');
+        $page->content = Input::get('content');
+        $page->save();
         return Redirect::route('pages.index')->with('success','Page created');
 	}
 
 	/**
 	 * Display the specified resource.
-	 * GET /pages/{id}
+	 * GET /{slug}
 	 *
-	 * @param  int  $id
+	 * @param  string  $slug
 	 * @return Response
 	 */
-	public function show($id)
+	public function show($slug)
 	{
-        $page = Page::findOrFail($id);
-        $this->layout->content = View::make('pages.show', array('page' => $page));
-    }
-
-    public function showBySlug($slug)
-    {
         $page = Page::where('slug', '=', $slug)->first();
-
         if(!$page){
-            return Redirect::home();
+            App::abort(404);
         }
         $this->layout->content = View::make('pages.show', array('page' => $page));
     }
@@ -88,7 +94,8 @@ class PagesController extends BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+        $page = Page::findOrFail($id);
+        $this->layout->content = View::make('pages.edit')->with('page', $page);
 	}
 
 	/**
@@ -100,7 +107,12 @@ class PagesController extends BaseController {
 	 */
 	public function update($id)
 	{
-		//
+        $page = Page::find($id);
+        $page->title = Input::get('title');
+        $page->slug = Input::get('slug');
+        $page->content = Input::get('content');
+        $page->save();
+        return Redirect::route('page.show', $page->slug);
 	}
 
 	/**
@@ -112,7 +124,8 @@ class PagesController extends BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+        Page::destroy($id);
+        return Redirect::route('pages.index');
 	}
 
 }
