@@ -49,10 +49,7 @@ Route::group(['before' => 'guest'], function()
     ]);
 });
 
-Route::get('dashboard', function()
-{
-    return View::make('dashboard'); // will return app/views/index.php
-});
+Route::controller('admin', 'AdminController');
 
 Route::group(array('prefix' => 'api'), function() {
 
