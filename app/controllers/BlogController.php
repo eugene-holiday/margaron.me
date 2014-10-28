@@ -1,12 +1,16 @@
 <?php
 
 use Margaron\Blog\Blog;
+use Margaron\Blog\BlogRepositoryInterface;
 
 class BlogController extends BaseController {
 
-    function __construct()
+    protected $post;
+
+    function __construct(BlogRepositoryInterface $post)
     {
         $this->beforeFilter('auth', array('except' => array('index', 'show')));
+        $this->post = $post;
     }
 
     /**
@@ -16,8 +20,7 @@ class BlogController extends BaseController {
 	 */
 	public function index()
 	{
-        $posts = Blog::all();
-        $posts = $posts->sortBy('created_at', 0, true);
+        $posts = $this->post->getAll();
         $this->layout->content =  View::make('blog.index', compact('posts'));
 	}
 
@@ -59,7 +62,7 @@ class BlogController extends BaseController {
 	 */
 	public function show($id)
 	{
-		$post = Blog::findOrFail($id);
+		$post = $this->post->find($id);
         $this->layout->content = View::make('blog.show', array('post' => $post));
 
 	}
