@@ -1,6 +1,7 @@
 <?php
 
 use Margaron\Blog\Blog;
+use Margaron\Users\User;
 
 class BlogTableSeeder extends Seeder
 {

@@ -28,6 +28,9 @@
 
             input.oninput = function() {
                 $('.editable').html(input.value);
+                $('pre code').each(function(i, block) {
+                    hljs.highlightBlock(block);
+                });
             }
         </script>
     </div>
